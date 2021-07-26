@@ -10,6 +10,8 @@ const cors = require('cors');
 //getting the routes exported in routes folder
 const userRoutes = require("./routes/user")
 const authRoutes = require("./routes/auth")
+const categoryRoutes = require("./routes/category")
+const blogRoutes = require("./routes/blog")
 
 //middlewares
 app.use(cors());
@@ -20,6 +22,7 @@ mongoose.connect(process.env.DATABASE , {
     useNewUrlParser : true ,
     useUnifiedTopology : true ,
     useCreateIndex : true
+    
 }).then(() => {
     console.log("DB CONNECTED")
 });
@@ -28,7 +31,10 @@ app.use('/api',userRoutes);
 //For Ex : http://loalhost:8000/api/userRoute
 app.use('/api',authRoutes);
 //For Ex : http://loalhost:8000/api/authRoutes
-
+app.use('/api',categoryRoutes);
+//For Ex : http://loalhost:8000/api/categoryRoutes
+app.use('/api',blogRoutes);
+//For Ex : http://loalhost:8000/api/blogRoutes
 
 //app listening on port.
 app.listen( process.env.PORT || 8000, () => {

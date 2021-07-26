@@ -89,11 +89,14 @@ exports.isSignedIn = expressJwt({
 
 //middleware for isAuthenticated
 exports.isAuthenticated = (req, res , next) => {
-    if(!(req.auth && req.profile && req.profile._id === req.auth._id)){
+    
+    if(!(req.auth && req.profile && req.profile._id == req.auth._id)){
     return res.status(403).json({
             error: 'not authenticated'
         });
     }
+    
+
     next()
 }
 

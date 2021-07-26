@@ -12,13 +12,7 @@ const userSchema = new mongoose.Schema({
             type:String,
             required:true
         },
-    blogs:{
-        type:Array,
-        default:[{
-            type:ObjectId,
-            ref:'Blog'
-        }]
-     },
+    blogs:[{type:ObjectId,ref:'Blog'}],
       role:{
         type:Number,
         default:0
